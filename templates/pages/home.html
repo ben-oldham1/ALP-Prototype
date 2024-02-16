@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block content %}
+
+{% include "components/navbar.html" %}
+
+<div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2 col-sm-3 p-0">
+            {% include "components/sidebar.html" %}
+        </div>
+        <div class="col-md-10 col-sm-9 p-3">
+            <h2>My Recent Modules</h2>
+            <p>This is where your main content goes.</p>
+
+            <div class="row">
+
+                <div class="col-md-4 col-sm-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Module title</h5>
+                            <p class="card-text">
+                                Module description
+                            </p>
+                            <a href="#" class="btn btn-primary">See module</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

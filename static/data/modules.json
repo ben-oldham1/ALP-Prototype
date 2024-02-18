@@ -1,0 +1,13 @@
+[
+    {
+        "id": 1,
+        "name": "Introduction to Python",
+        "desc": "...",
+        "yr": "...",
+        "author": "...",
+        "badges": [
+            "Python",
+            "..."
+        ]
+    }
+]

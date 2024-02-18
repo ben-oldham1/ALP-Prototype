@@ -4,6 +4,10 @@ from flask import Flask, render_template
 app = Flask(__name__)
  
 # Decorator which tells the application which URL should call the associated function
+@app.route('/')
+def index():
+    return '<h1>Visit <a href="/home">/home</a> page to get started</h1>';
+    
 @app.route('/login')
 def login():
     return render_template('pages/login.html');

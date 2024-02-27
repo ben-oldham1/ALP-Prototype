@@ -6,16 +6,23 @@ Login page
 
 {% block content %}
 
-<div class="card" style="width: 18.75rem;">
-    <img src="..." class="card-img-top" alt="...">
-    <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-        </p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
+<div class="container">
+    <div class="center">
+        <div class="card" style="width: 18.75rem;">
+            <div class="card-body text-center">
+                <h5 class="card-title">Welcome</h5>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group mb-3">
+                    <input type="password" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="basic-addon2">
+                </div>
+                <a href="#" class="btn btn-primary">Login</a>
+                <p class="mt-2">No account yet? <a href="#">Sign up!</a></p> <!-- Added clickable text -->
+            </div>
+        </div>
     </div>
 </div>
+
 
 {% endblock %}

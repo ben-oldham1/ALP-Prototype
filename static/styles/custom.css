@@ -3,3 +3,22 @@
     height: 100vh;
     padding: 0;
 }
+
+.progress-wrapper {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    /* Adjust as needed */
+}
+
+.progress-label {
+    flex: 0 0 60px;
+    /* Adjust width of language name column */
+    text-align: left;
+    margin-right: 10px;
+    /* Space between label and progress bar */
+}
+
+.progress {
+    flex-grow: 1;
+}

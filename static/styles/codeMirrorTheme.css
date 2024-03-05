@@ -1,0 +1,18 @@
+/* Custom theme for the code editor on lessonView */
+
+/* Editor background */
+.cm-s-my-custom-theme .cm-content {
+    background-color: #ea7474;
+}
+
+/* Line number background */
+.cm-s-my-custom-theme .CodeMirror-linenumber {
+    background-color: rgb(102, 169, 117);
+    /* Set line number background color */
+}
+
+/* General font color */
+.cm-s-my-custom-theme .CodeMirror {
+    color: rgb(213, 213, 213);
+    /* Set font color */
+}

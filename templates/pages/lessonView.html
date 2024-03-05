@@ -1,7 +1,14 @@
 {% extends "base.html" %}
 
+
 {% block title %}
 View lesson
+{% endblock %}
+
+{% block imports %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.0/codemirror.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.0/codemirror.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.0/mode/javascript/javascript.min.js"></script>
 {% endblock %}
 
 {% block content %}
@@ -44,7 +51,25 @@ View lesson
                 <div class="tab-content" id="js-tabs-content-1">
                     <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab"
                         tabindex="0">
-                        ...</div>
+
+                        <textarea id="code" name="code">
+a = 33
+b = 33
+if b > a:
+    print("b is greater than a")
+elif a == b:
+    print("a and b are equal")
+                        </textarea>
+
+                        <script>
+                            var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+                                lineNumbers: true,
+                                mode: "python",
+                                theme: "dracula" // Replace "my-custom-theme" with custom theme name
+                            });
+                        </script>
+
+                    </div>
                     <div class="tab-pane fade" id="account-tab-pane" role="tabpanel" aria-labelledby="account-tab"
                         tabindex="0">...
                     </div>

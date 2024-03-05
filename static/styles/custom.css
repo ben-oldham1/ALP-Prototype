@@ -22,3 +22,10 @@
 .progress {
     flex-grow: 1;
 }
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh; /* Adjust if needed */
+}

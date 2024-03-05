@@ -28,6 +28,8 @@ Home
 
                 <h3 class="mt-3">Insights</h3>
 
+                <h5>Top studied languages</h5>
+                <!-- progress bars -->
                 <div class="progress-wrapper">
                     <div class="progress-label">SQL</div>
                     <div class="progress" role="progressbar" aria-label="SQL Progress" aria-valuenow="80"
@@ -64,6 +66,64 @@ Home
                     </div>
                 </div>
 
+                <br>
+
+                <!-- line chart -->
+                <h5>Lessons completed</h5>
+                
+                <div class="trend-chart">
+                    <canvas id="line-chart"></canvas>
+                    <script src="https://cdn.jsdelivr.net/npm/chart.js">//pulls table renderer</script>
+                    <script>
+                        //get past few weeks for data label
+                        function getPastWeeks() {
+                            const today = new Date();
+                            const labels = [];
+                            for (let i = 5; i >= 0; i--) {
+                                const date = new Date(today);
+                                date.setDate(date.getDate() - (i * 7));
+                                const day = date.getDate();
+                                const month = date.toLocaleString('default', { month: "short" });
+                                labels.push(`${day} ${month}`);
+                            }
+                            return labels;
+                        }
+                        const data = { //data for table
+                            labels: getPastWeeks(),
+                            datasets: [{
+                                label: '',
+                                data: [12, 15, 10, 5, 13, 3],
+                                borderColor: 'rgb(255,255,255)',
+                                borderWidth: 2,
+                                fill: false
+                            }]
+                        };
+                        const options = { // table options (need to find out how to take off the box, its related to tile but idk how to remove it)
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero: true
+                                    }
+                                }]
+                            }, legend:{
+                                display: false
+                            }
+                        };
+
+
+                        const ctx = document.getElementById('line-chart').getContext('2d');
+
+                        // Create the line chart
+                        const lineChart = new Chart(ctx, {
+                        type: 'line',
+                        data: data,
+                        options: options
+                        });
+                    </script>
+                    
+                </div>
 
                 <h3 class="mt-3">Quests</h3>
             </div>

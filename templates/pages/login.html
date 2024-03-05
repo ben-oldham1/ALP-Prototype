@@ -12,12 +12,14 @@ Login page
             <div class="card-body text-center">
                 <h5 class="card-title">Welcome</h5>
                 <div class="input-group mb-3">
-                    <input type="text" id="username" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" required>
+                    <input type="text" id="username" class="form-control" placeholder="Username" aria-label="Username"
+                        aria-describedby="basic-addon1" required>
                 </div>
                 <div class="input-group mb-3">
-                    <input type="password" id="password" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="basic-addon2" required>
+                    <input type="password" id="password" class="form-control" placeholder="Password"
+                        aria-label="Password" aria-describedby="basic-addon2" required>
                 </div>
-                <button type="button" onclick="login()">Login</button>
+                <button type="button" class="btn btn-primary" onclick="login()">Login</button>
                 <!-- <a href="/home" class="btn btn-primary">Login</a> -->
                 <p class="mt-2">No account yet? <a href="#">Sign up!</a></p> <!-- Added clickable text -->
 
@@ -26,7 +28,7 @@ Login page
                         var username = document.getElementById("username").value;
                         var password = document.getElementById("password").value;
 
-                        if (username === "username" && password === "password"){
+                        if (username === "username" && password === "password") {
                             window.location.href = "/home";
                         } else {
                             alert("Invalid username or password. Please try again.");

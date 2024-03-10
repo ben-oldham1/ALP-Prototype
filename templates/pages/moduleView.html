@@ -6,12 +6,35 @@ Home
 
 {% block content %}
 
-{% include "components/navbar.html" %}
+<!-- Navbar component -->
+<nav class="navbar navbar-expand-lg"
+    style="background-color: var(--bs-content-bg); border-bottom: var(--bs-border-width) solid var(--bs-content-border-color);">
+    <div class="container-fluid">
+        <a class="navbar-brand d-flex" href="/home">
+            <img src="{{ url_for('static', filename='images/UWE-logo.png') }}" alt="Logo" height="34"
+                class="d-inline-block">
+            <span class="align-self-center ps-3">
+                ByteLearn
+            </span>
+        </a>
 
-<div>
-</div>
+        <div class="d-flex gap-3" role="search">
+            <a href="#search">
+                <i class="bi bi-search"></i>
+            </a>
+            <a href="#notifications">
+                <i class="bi bi-bell"></i>
+            </a>
+            <a href="#account">
+                <i class="bi bi-person"></i>
+            </a>
+        </div>
+    </div>
+</nav>
+
 <div class="container-fluid">
     <div class="row">
+        <!-- Sidebar -->
         <div class="col-lg-2 col-sm-3 p-0">
 
             <div class="bl-sidebar border-end p-3">
@@ -19,6 +42,8 @@ Home
             </div>
 
         </div>
+        
+        <!-- Main content -->
         <div class="col-md-10 col-sm-9 p-3">
 
             <div class="row">

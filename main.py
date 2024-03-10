@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, jsonify
  
 # Flask constructor takes the name of current module (__name__) as argument
 app = Flask(__name__)
@@ -23,6 +23,18 @@ def moduleView():
 @app.route('/lessonview')
 def lessonView():
     return render_template('pages/lessonView.html');
+
+# API route to provide AI chatbot functionality
+@app.route('/chatbot', methods=['POST'])
+def chatbot():
+    user_message = request.json['message']
+
+    # Send user_message to the chatbot and get the response
+    # Replace this with actual code to interact with your chosen chatbot framework or service
+
+    chatbot_response = "This is a placeholder response from the chatbot. This is a placeholder response from the chatbot."
+
+    return jsonify({'response': chatbot_response})
 
 # Main driver function
 if __name__ == '__main__':

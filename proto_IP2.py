@@ -6,11 +6,12 @@
 
 from flask import Flask, request, render_template_string
 from openai import OpenAI
+import config
 
 app = Flask(__name__)
 
-# you need an API Key: create one for your account
-client = OpenAI(api_key='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')
+# Load your API key from config.py file
+client = OpenAI(api_key=config.OPENAI_KEY)
 
 @app.route('/', methods=['GET'])
 def home():
@@ -35,7 +36,7 @@ def home():
 def analyze_code():
     code_snippet = request.form['code_snippet']
 
-    response = client.chat.completions.create(
+    completion = client.chat.completions.create(
     model="gpt-3.5-turbo",
     messages=[
         {
@@ -46,16 +47,12 @@ def analyze_code():
           "role": "user",
           "content": code_snippet
         }
-    ],
-    temperature=1,
-    max_tokens=256,
-    top_p=1,
-    frequency_penalty=0,
-    presence_penalty=0
+    ]
     )
+
     
     # Extracting the analysis or suggestion provided by the model
-    suggestion = response.choices[0].message['content'] if response.choices else "No suggestion could be generated."
+    suggestion = completion.choices[0].message if completion.choices else "No suggestion could be generated."
 
     # Displaying the result
     return render_template_string("""

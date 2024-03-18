@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, jsonify
+import chatbot_api
  
 # Flask constructor takes the name of current module (__name__) as argument
 app = Flask(__name__)
@@ -32,7 +33,7 @@ def chatbot():
     # Send user_message to the chatbot and get the response
     # Replace this with actual code to interact with your chosen chatbot framework or service
 
-    chatbot_response = "This is a placeholder response from the chatbot. This is a placeholder response from the chatbot."
+    chatbot_response = chatbot_api.query(user_message)
 
     return jsonify({'response': chatbot_response})
 

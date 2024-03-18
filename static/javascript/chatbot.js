@@ -12,7 +12,7 @@ const sendMessage = async () => {
     function outputMsg(chatArea, user, message) {
         return chatArea.innerHTML += `<div class="row mb-2">
     <div class="col-12"><strong>${user}</strong></div>
-    <div class="col-12">${message}</div>
+    <div class="col-12"><pre>${message}</pre></div>
     </div>`;
     }
 
@@ -30,7 +30,7 @@ const sendMessage = async () => {
 
     // Save the AI response from server
     const data = await response.json();
-    const chatbotResponse = data.response;
+    const chatbotResponse = data.response['response'];
 
     // Display the response
     outputMsg(chatArea, 'ByteLearn', chatbotResponse);

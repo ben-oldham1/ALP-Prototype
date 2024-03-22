@@ -1,23 +1,31 @@
 // Function to query the AI and display the response
 const sendMessage = async () => {
-
-    // Get the div that will hold the request and response text
     const chatArea = document.getElementById('chat-area');
-
-    // Get the user query text
     const message = document.getElementById('user-message').value;
 
-    // Function to format the output message
-    // Takes chatArea object, name of user (You or AI) and the message to display
     function outputMsg(chatArea, user, message) {
-        return chatArea.innerHTML += `<div class="row mb-2">
-    <div class="col-12"><strong>${user}</strong></div>
-    <div class="col-12"><pre>${message}</pre></div>
-    </div>`;
+        const messageElement = document.createElement('div');
+        messageElement.className = "row mb-2";
+        messageElement.innerHTML = `<div class="col-12"><strong>${user}</strong></div>
+                                    <div class="col-12">${message}</div>`;
+        chatArea.appendChild(messageElement);
+    }
+
+    function createLoadingAnimation() {
+        const loadingElement = document.createElement('div');
+        loadingElement.className = "d-flex align-items-center gap-3";
+        loadingElement.id = "loading-animation";
+        loadingElement.innerHTML = `<div class="spinner-grow text-body-tertiary" role="status" aria-hidden="true"></div>
+                                    AI thinking...`;
+        return loadingElement;
     }
 
     // Display the original query
     outputMsg(chatArea, 'You', message);
+
+    // Create and append the loading animation
+    const loadingAnimation = createLoadingAnimation();
+    chatArea.appendChild(loadingAnimation);
 
     // Make the request to server
     const response = await fetch('/chatbot', {
@@ -28,15 +36,18 @@ const sendMessage = async () => {
         body: JSON.stringify({ message: message })
     });
 
-    // Save the AI response from server
     const data = await response.json();
     const chatbotResponse = data.response['response'];
+
+    // Remove the loading animation
+    document.getElementById('loading-animation').remove();
 
     // Display the response
     outputMsg(chatArea, 'ByteLearn', chatbotResponse);
 
     // Add a dividing line
-    chatArea.innerHTML += '<hr>';
+    const divider = document.createElement('hr');
+    chatArea.appendChild(divider);
 }
 
 const clearChat = () => {

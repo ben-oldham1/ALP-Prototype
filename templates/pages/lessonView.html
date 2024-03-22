@@ -172,52 +172,25 @@ View lesson
 
                         <div id="editor-container">
                             <div id="editor">
-# Function to add two numbers
-def add(x, y):
-    return x + y
+# Step 1: Greet the user.
+print("Welcome to the 100th Birthday Calculator!")
 
-# Function to subtract two numbers
-def subtract(x, y):
-    return x - y
+# Step 2: Ask for the user's name.
+name = input("What is your name? ")
 
-# Function to multiply two numbers
-def multiply(x, y):
-    return x * y
+# Step 3: Ask for the user's age.
+age = input("How old are you? ")
 
-# Function to divide two numbers
-def divide(x, y):
-    if y == 0:
-        return "Error! Division by zero."
-    return x / y
+# Step 4: Convert the age from a string to an integer.
+age = int(age)
 
-# Main function
-def main():
-    print("Welcome to Simple Calculator")
-    print("Operations:")
-    print("1. Addition")
-    print("2. Subtraction")
-    print("3. Multiplication")
-    print("4. Division")
+# Step 5: Calculate the year in which the user will turn 100.
+current_year = 2023 # You can update this year to the current year.
+years_until_100 = 100 - age
+year_turn_100 = current_year + years_until_100
 
-# Take input from the user
-choice = input("Enter operation (1/2/3/4): ")
-
-num1 = float(input("Enter first number: "))
-num2 = float(input("Enter second number: "))
-
-if choice == '1':
-    print("Result:", add(num1, num2))
-elif choice == '2':
-    print("Result:", subtract(num1, num2))
-elif choice == '3':
-    print("Result:", multiply(num1, num2))
-elif choice == '4':
-    print("Result:", divide(num1, num2))
-else:
-    print("Invalid input")
-
-if __name__ == "__main__":
-    main()
+# Step 6: Display the result to the user.
+print(f"Hello, {name}! You will turn 100 years old in the year {year_turn_100}.")
                             </div>
                         </div>
 

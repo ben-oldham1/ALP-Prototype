@@ -20,7 +20,8 @@ Home
 
 
         <div class="d-flex gap-3 align-items-center" role="search">
-            <button class="btn btn-secondary">
+            <!-- Open join module modal -->
+            <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 Join module
             </button>
 
@@ -57,7 +58,7 @@ Home
 
                 <h3 class="mt-3">Insights</h3>
 
-                <h5>Top studied languages</h5>
+                <h4 class="h6">Top studied languages</h4>
                 <!-- progress bars -->
                 <div class="progress-wrapper">
                     <div class="progress-label">SQL</div>
@@ -98,7 +99,7 @@ Home
                 <br>
 
                 <!-- line chart -->
-                <h5>Lessons completed</h5>
+                <h4 class="h6">Lessons completed</h4>
 
                 <div class="trend-chart">
                     <canvas id="line-chart"></canvas>
@@ -155,26 +156,28 @@ Home
                 </div>
 
                 <h3 class="mt-3">Quests</h3>
-                <div class="col-md-12 col-sm-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Answer Questions about loops in PHP</h5>
-                            <div class="mb-2">
-                                <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="50"
-                                    aria-valuemin="0" aria-valuemax="100">
-                                    <div class="progress-bar text-bg-success" style="width: 50%"></div>
-                                </div>
-                            </div>
-                            <h5 class="card-title">Complete a challenge question in SQL</h5>
-                            <div class="mb-2">
-                                <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="1"
-                                    aria-valuemin="0" aria-valuemax="100">
-                                    <div class="progress-bar text-bg-success" style="width: 50%"></div>
-                                </div>
-                            </div>
+
+                <div class="mb-2">
+                    <h4 class="h6">Answer Questions about loops in PHP</h4>
+                    <div class="mt-2">
+                        <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="50"
+                            aria-valuemin="0" aria-valuemax="100">
+                            <div class="progress-bar text-bg-success" style="width: 50%"></div>
                         </div>
                     </div>
                 </div>
+
+                <div class="mb-2">
+                    <h4 class="h6">Complete a challenge question in SQL</h4>
+                    <div class="mt-2">
+                        <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="1"
+                            aria-valuemin="0" aria-valuemax="100">
+                            <div class="progress-bar text-bg-success" style="width: 50%"></div>
+                        </div>
+                    </div>
+                </div>
+
+
                 <!-- announcements Sidebar -->
                 <h3>Announcements</h3>
                 <div>
@@ -201,7 +204,9 @@ Home
                                             <h7 class="card-subtitle mb-2 text-body-secondary">Dr John Smith</h7>
                                             <h4 class="card-title">New Assignment</h4>
                                             <p class="card-text">
-                                                Hello all, please complete the ‘Into to Python’ module I have assigned to you. Your score will contribute towards your final module assessment grade.
+                                                Hello all, please complete the ‘Into to Python’ module I have assigned
+                                                to you. Your score will contribute towards your final module assessment
+                                                grade.
                                             </p>
                                         </div>
                                     </div>
@@ -215,8 +220,10 @@ Home
                                             <h7 class="card-subtitle mb-2 text-body-secondary">Dr Jenny Williams</h7>
                                             <h4 class="card-title">Lecture follow-up</h4>
                                             <p class="card-text">
-                                                Following todays lecture on web development, please study the ‘PHP basics’ module to further your understanding.
-                                            </p>                                            </p>
+                                                Following todays lecture on web development, please study the ‘PHP
+                                                basics’ module to further your understanding.
+                                            </p>
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
@@ -229,7 +236,8 @@ Home
                                             <h7 class="card-subtitle mb-2 text-body-secondary">Dr Rob Evans</h7>
                                             <h4 class="card-title">Further reading</h4>
                                             <p class="card-text">
-                                                Now we have completed the basics of Python in class, you may wish to expand further by completing the ‘Advanced Python’ module.
+                                                Now we have completed the basics of Python in class, you may wish to
+                                                expand further by completing the ‘Advanced Python’ module.
                                             </p>
                                         </div>
                                     </div>
@@ -243,7 +251,9 @@ Home
                                             <h7 class="card-subtitle mb-2 text-body-secondary">Mr Martin Harris</h7>
                                             <h4 class="card-title">Tutorial session</h4>
                                             <p class="card-text">
-                                                For this weeks tutorial, please complete the ‘Advanced SQL’ module, you will need a solid understanding of the advanced topics in preparation for your assignment.
+                                                For this weeks tutorial, please complete the ‘Advanced SQL’ module, you
+                                                will need a solid understanding of the advanced topics in preparation
+                                                for your assignment.
                                             </p>
                                         </div>
                                     </div>
@@ -353,6 +363,29 @@ Home
                 </div>
             </div>
 
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Join module</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control form-control-lg" placeholder="Module Code"">
+                    <button type="button" class="btn btn-primary" id="button-add-on-1">Find module</button>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Dismiss</button>
+            </div>
         </div>
     </div>
 </div>

@@ -1,0 +1,10 @@
+[
+    {
+        "id": 0,
+        "content": "Provide feedback to the user by telling them if their guess is warmer or colder than the previous guess"
+    },
+    {
+        "id": 1,
+        "content": "Modify the code so it allows infinite guesses"
+    }
+]

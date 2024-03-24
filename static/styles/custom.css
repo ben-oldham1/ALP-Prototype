@@ -29,3 +29,24 @@
     align-items: center;
     height: 50vh; /* Adjust if needed */
 }
+
+
+/* Output console */
+.output {
+    font-family: 'Hack';
+    white-space: pre;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.input {
+    background-color: var(--bs-sable-900-hsl);
+    border: none;
+    color: var(--bs-body-color);
+    width: 100%;
+    margin-top: 10px;
+}
+
+.input:focus {
+    outline: none;
+}

@@ -7,6 +7,7 @@ View lesson
 
 {% block imports %}
 <script src="{{ url_for('static', filename='javascript/chatbot.js') }}"></script>
+<script src="{{ url_for('static', filename='javascript/output.js') }}"></script>
 
 <style type="text/css" media="screen">
     body {
@@ -19,7 +20,7 @@ View lesson
     }
 
     #editor-container {
-        height: calc(100vh - 100px);
+        height: 60vh;
     }
 
     #editor {
@@ -28,6 +29,7 @@ View lesson
         position: relative;
         font-family: "Hack";
         font-size: 0.8rem;
+        overflow-y: scroll;
     }
 </style>
 {% endblock %}
@@ -75,15 +77,6 @@ View lesson
                             <li class="breadcrumb-item active" aria-current="page">Python Lesson 1</li>
                         </ul>
                     </nav>
-
-                    <div class="d-flex gap-2">
-                        <button type="button" class="btn btn-primary"><i class="bi bi-play-fill"></i> Run</button>
-
-                        <button type="button" class="btn btn-secondary" data-bs-toggle="offcanvas"
-                            data-bs-target="#ai-offcanvas">
-                            <i class="bi bi-stars"></i> Ask AI
-                        </button>
-                    </div>
 
                 </div>
             </div>
@@ -147,11 +140,13 @@ View lesson
             style="border-left: var(--bs-border-width) solid var(--bs-content-border-color); border-right: var(--bs-border-width) solid var(--bs-content-border-color);">
 
             <div class="row mt-1">
-                <!-- File tabs -->
-                <!-- JavaScript tab plugin -->
-                <ul class="nav nav-underline px-2 gap-3" id="js-tabs-1" role="tablist">
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link active" id="home-tab" data-bs-toggle="tab"
+                <div class="d-flex justify-content-between align-items-center gap-2">
+
+                    <!-- File tabs -->
+                    <!-- JavaScript tab plugin -->
+                    <ul class="nav nav-underline px-2 gap-3" id="js-tabs-1" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="home-tab" data-bs-toggle="tab"
                             data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane"
                             aria-selected="true">
                             <i class="bi bi-file-earmark"></i> Main.py
@@ -159,13 +154,26 @@ View lesson
                     </li>
                     <li class="nav-item" role="presentation">
                         <button class="nav-link" id="account-tab" data-bs-toggle="tab"
-                            data-bs-target="#account-tab-pane" type="button" role="tab" aria-controls="account-tab-pane"
-                            aria-selected="false">
-                            <i class="bi bi-file-earmark"></i> Config.py
-                        </button>
-                    </li>
-                </ul>
+                        data-bs-target="#account-tab-pane" type="button" role="tab" aria-controls="account-tab-pane"
+                        aria-selected="false">
+                        <i class="bi bi-file-earmark"></i> Config.py
+                    </button>
+                </li>
+            </ul>
 
+            <div class="d-flex gap-2">
+                <button type="button" onclick="runCode()" class="btn btn-primary">
+                    <i class="bi bi-play-fill"></i> Run
+                </button>
+
+                <button type="button" class="btn btn-secondary" data-bs-toggle="offcanvas" data-bs-target="#ai-offcanvas">
+                    <i class="bi bi-stars"></i> Ask AI
+                </button>
+            </div>
+        </div>
+            </div>
+                
+            <div class="row mt-1">
                 <div class="tab-content p-0" id="js-tabs-content-1">
                     <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab"
                         tabindex="0">
@@ -198,9 +206,37 @@ print(f"Hello, {name}! You will turn 100 years old in the year {year_turn_100}."
                     <div class="tab-pane fade" id="account-tab-pane" role="tabpanel" aria-labelledby="account-tab"
                         tabindex="0">...
                     </div>
+
+
                 </div>
 
 
+            </div>
+
+            <div class="row bg-very-dark"
+                style="background: var(--bs-body-bg); border-bottom: var(--bs-border-width) solid var(--bs-content-border-color); border-top: var(--bs-border-width) solid var(--bs-content-border-color);">
+                <div class="d-flex justify-content-between align-items-center gap-2 py-2">
+
+                    <h1 class="h4 mb-0">
+                        Output
+                    </h1>
+
+                    <button type="button" onclick="clearTerminal()" class="btn btn-secondary">
+                        Clear
+                    </button>
+                </div>
+            </div>
+
+            <div class="row bg-very-dark"
+                style="background: var(--bs-body-bg);">
+                <div class="py-2">
+
+                    <div id="terminal" class="terminal">
+                        <div id="output" class="output"></div>
+                        <input type="text" id="input" class="input" autofocus>
+                    </div>
+
+                </div>
             </div>
         </div>
 
@@ -222,7 +258,7 @@ print(f"Hello, {name}! You will turn 100 years old in the year {year_turn_100}."
 
         <div class="row justify-content-end mb-3">
             <div class="col-12 justify-content-end">
-                <button class="btn btn-primary" onclick="sendMessage()">Send</button>
+                <button class="btn btn-primary me-1" onclick="sendMessage()">Send</button>
                 <button class="btn btn-secondary" onclick="clearChat()">Clear</button>
             </div>
         </div>
@@ -240,6 +276,7 @@ print(f"Hello, {name}! You will turn 100 years old in the year {year_turn_100}."
 <script>
     var editor = ace.edit("editor");
     editor.setTheme("ace/theme/github_dark");
+    editor.renderer.setShowGutter(true)
     editor.session.setMode("ace/mode/python");
 
     editor.resize();

@@ -1,8 +1,20 @@
 from flask import Flask, render_template, request, jsonify
 import chatbot_api
+import json
  
 # Flask constructor takes the name of current module (__name__) as argument
 app = Flask(__name__)
+
+# Utility functions
+# Return lesson objectives loaded from file
+def load_objectives():
+    objectivesJson = open('static/data/lessonObjectives.json')
+    objectivesData = json.load(objectivesJson)
+    return objectivesData
+
+# Return lesson content html loaded from file
+def load_lesson_content():
+    return 'placeholder function'
  
 # Decorator which tells the application which URL should call the associated function
 @app.route('/')
@@ -23,17 +35,19 @@ def moduleView():
 
 @app.route('/lessonview')
 def lessonView():
-    return render_template('pages/lessonView.html');
+    objectivesData = load_objectives()
+
+    return render_template('pages/lessonView.html', objectivesData=objectivesData);
 
 # API route to provide AI chatbot functionality
 @app.route('/chatbot', methods=['POST'])
 def chatbot():
+    # Get contextual data
     user_message = request.json['message']
+    objectivesData = load_objectives()
 
-    # Send user_message to the chatbot and get the response
-    # Replace this with actual code to interact with your chosen chatbot framework or service
-
-    chatbot_response = chatbot_api.query(user_message)
+    # Send contextual data to the chatbot and get the response
+    chatbot_response = chatbot_api.query(user_message, objectivesData)
 
     return jsonify({'response': chatbot_response})
 

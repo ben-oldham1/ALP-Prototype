@@ -112,6 +112,7 @@ View lesson
 
                     <h2 class="h4">Step 4: Error Handling</h2>
                     <p>We'll also implement error handling to handle scenarios such as division by zero.</p>
+
                 </div>
             </div>
 
@@ -119,18 +120,14 @@ View lesson
                 <div class="col-12 p-3">
                     <h1 class="h3 sticky-top">Objectives</h1>
 
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="example-checkbox-1">
-                        <label class="form-check-label" for="example-checkbox-1">
-                            Make the calculator work
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="example-checkbox-2" checked>
-                        <label class="form-check-label" for="example-checkbox-2">
-                            Another objective
-                        </label>
-                    </div>
+                    {% for objective in objectivesData %}
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="{{objective['id']}}">
+                            <label class="form-check-label" for="{{objective['id']}}">
+                                {{objective['content']}}
+                            </label>
+                        </div>
+                    {% endfor %}
 
                 </div>
             </div>

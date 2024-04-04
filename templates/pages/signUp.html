@@ -16,22 +16,35 @@ Login page
                         aria-describedby="basic-addon1" required>
                 </div>
                 <div class="input-group mb-3">
+                    <input type="email" id="email" class="form-control" placeholder="Email"
+                        aria-label="Email" aria-describedby="basic-addon2" required>
+                </div>
+                <div class="input-group mb-3">
                     <input type="password" id="password" class="form-control" placeholder="Password"
                         aria-label="Password" aria-describedby="basic-addon2" required>
                 </div>
+                <div class="input-group mb-3">
+                    <input type="password" id="password2" class="form-control" placeholder="Re-enter Password"
+                        aria-label="Re-enter Password" aria-describedby="basic-addon2" required>
+                </div>
                 <button type="button" class="btn btn-primary" onclick="login()">Login</button>
-                <!-- <a href="/home" class="btn btn-primary">Login</a> -->
-                <p class="mt-2">No account yet? <a href="/signUp">Sign up!</a></p> <!-- Added clickable text -->
+                <p class="mt-2">Already have an account? <a href="/login">log in!</a></p> 
 
                 <script>
                     function login() {
                         var username = document.getElementById("username").value;
+                        var username = document.getElementById("email").value;
                         var password = document.getElementById("password").value;
+                        var username = document.getElementById("password2").value;
 
-                        if (username === "username" && password === "password") {
+                        let emailRegex = /^[^\s@]+@uwe\.live\.ac\.uk$/;
+
+                        if (password === password2 && emailRegex.test(email)) {
                             window.location.href = "/home";
-                        } else {
-                            alert("Invalid username or password. Please try again.");
+                        } else if(password !== password2) {
+                            alert("Passwords entered do not match. Please try again.");
+                        } else if(!(emailRegex.test(email))) {
+                            alert("invalid email. Please try again.");
                         }
                     }
                 </script>

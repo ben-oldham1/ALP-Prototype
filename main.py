@@ -24,6 +24,10 @@ def index():
 @app.route('/login')
 def login():
     return render_template('pages/login.html');
+
+@app.route('/signUp')
+def signUp():
+    return render_template('pages/signUp.html');
  
 @app.route('/home')
 def home():
@@ -32,6 +36,10 @@ def home():
 @app.route('/moduleview')
 def moduleView():
     return render_template('pages/moduleView.html');
+
+@app.route('/account')
+def account():
+    return render_template('pages/account.html');
 
 @app.route('/lessonview')
 def lessonView():

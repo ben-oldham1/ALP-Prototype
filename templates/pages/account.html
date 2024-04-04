@@ -1,0 +1,256 @@
+{% extends "base.html" %}
+
+{% block title %}
+Account page
+{% endblock %}
+
+{% block content %}
+<nav class="navbar navbar-expand-lg"
+    style="background-color: var(--bs-content-bg); border-bottom: var(--bs-border-width) solid var(--bs-content-border-color);">
+    <div class="container-fluid">
+        <a class="navbar-brand d-flex" href="/home">
+            <img src="{{ url_for('static', filename='images/UWE-logo.png') }}" alt="Logo" height="34"
+                class="d-inline-block">
+            <span class="align-self-center ps-3">
+                ByteLearn
+            </span>
+        </a>
+
+        <div class="d-flex gap-3" role="search">
+            <a href="#search">
+                <i class="bi bi-search"></i>
+            </a>
+            <a href="#notifications">
+                <i class="bi bi-bell"></i>
+            </a>
+            <a href="/account">
+                <i class="bi bi-person"></i>
+            </a>
+        </div>
+    </div>
+</nav>
+<!--make css orientation better (ask ben)-->
+<div class="container-fluid" style="padding: 10px;">
+    <!--personal info-->
+    <section class="personal info">
+        <div class="row">
+            <div class="col-md-5 col-sm-9 p-3">
+                <div class="info-box  p-3 rounded shadow">
+                    <div class="row">
+                        <div class="col-md-4 col-sm-4">
+                            <img src="static\images\account image.png" style="max-width: 100%; height: auto;">
+                        </div>
+                        <div class="col-md-8 col-sm-8">
+                            <br>
+                            <br>
+                            <h6><strong>Name</strong><br>Dr John Smith</h6>
+                            <h6><strong>Student No.</strong><br>12345678</h6>
+                            <h6><strong>Email</strong><br>johnsmith@uwe.ac.uk</h6>
+                            <button type="button" class="btn btn-secondary mt-2 float-end" data-bs-toggle="offcanvas"
+                                data-bs-target="#personal-info-offcanvas">
+                                <i class="bi bi-box-arrow-up-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                var progressBars = document.querySelectorAll('.progress');
+
+                progressBars.forEach(function (progressBar) {
+                    var ariaValueNow = parseInt(progressBar.getAttribute('aria-valuenow'));
+
+                    var percentage = ariaValueNow + "%";
+                    var title;
+                    if (ariaValueNow >= 0 && ariaValueNow <= 9) {
+                        title = "Novice";
+                    } else if (ariaValueNow >= 10 && ariaValueNow <= 19) {
+                        title = "Apprentice";
+                    } else if (ariaValueNow >= 20 && ariaValueNow <= 29) {
+                        title = "Journey-man";
+                    } else if (ariaValueNow >= 30 && ariaValueNow <= 49) {
+                        title = "Intermediate";
+                    } else if (ariaValueNow >= 50 && ariaValueNow <= 69) {
+                        title = "Expert";
+                    } else if (ariaValueNow >= 70 && ariaValueNow <= 84) {
+                        title = "Master";
+                    } else if (ariaValueNow >= 85 && ariaValueNow <= 95) {
+                        title = "Grandmaster";
+                    } else if (ariaValueNow >= 96 && ariaValueNow <= 100) {
+                        title = "Legend";
+                    } else {
+                        title = "Unknown";
+                    }
+
+                    var progressWrapper = progressBar.closest('.progress-wrapper');
+                    var originalLabel = progressWrapper.querySelector('.progress-label').innerHTML;
+                    progressWrapper.querySelector('.progress-label').innerHTML = originalLabel + title + " (" + percentage + ")" + "<br>";
+                    progressWrapper.setAttribute('title', title);
+                });
+            });
+        </script>
+
+        <!--need to find way to make it (level:xxx) rather than percentage-->
+        <div class="row">
+            <div class="col-md-5 col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Your stats</h5>
+                        <div style="height: 450px; overflow-y: auto;">
+                            <div class="progress-wrapper">
+                                <div class="progress-label">SQL level: <br></div>
+                                <div class="progress" role="progressbar" aria-label="SQL Progress" aria-valuenow="100"
+                                    aria-valuemin="0" aria-valuemax="100">
+                                    <div class="progress-bar" style="width: 100%"></div>
+                                </div>
+                            </div>
+                            <div class="progress-wrapper">
+                                <div class="progress-label">Python level: <br></div>
+                                <div class="progress" role="progressbar" aria-label="SQL Progress" aria-valuenow="90"
+                                    aria-valuemin="0" aria-valuemax="100">
+                                    <div class="progress-bar" style="width: 90%"></div>
+                                </div>
+                            </div>
+                            <div class="progress-wrapper">
+                                <div class="progress-label">PHP level: <br></div>
+                                <div class="progress" role="progressbar" aria-label="SQL Progress" aria-valuenow="80"
+                                    aria-valuemin="0" aria-valuemax="100">
+                                    <div class="progress-bar" style="width: 80%"></div>
+                                </div>
+                            </div>
+                            <div class="progress-wrapper">
+                                <div class="progress-label">Java level: <br></div>
+                                <div class="progress" role="progressbar" aria-label="SQL Progress" aria-valuenow="70"
+                                    aria-valuemin="0" aria-valuemax="100">
+                                    <div class="progress-bar" style="width: 70%"></div>
+                                </div>
+                            </div>
+                            <div class="progress-wrapper">
+                                <div class="progress-label">C++ level: <br></div>
+                                <div class="progress" role="progressbar" aria-label="SQL Progress" aria-valuenow="60"
+                                    aria-valuemin="0" aria-valuemax="100">
+                                    <div class="progress-bar" style="width: 60%"></div>
+                                </div>
+                            </div>
+                            <div class="progress-wrapper">
+                                <div class="progress-label">C level: <br></div>
+                                <div class="progress" role="progressbar" aria-label="SQL Progress" aria-valuenow="50"
+                                    aria-valuemin="0" aria-valuemax="100">
+                                    <div class="progress-bar" style="width: 50%"></div>
+                                </div>
+                            </div>
+                            <div class="progress-wrapper">
+                                <div class="progress-label">C# level: <br></div>
+                                <div class="progress" role="progressbar" aria-label="SQL Progress" aria-valuenow="40"
+                                    aria-valuemin="0" aria-valuemax="100">
+                                    <div class="progress-bar" style="width: 40%"></div>
+                                </div>
+                            </div>
+                            <div class="progress-wrapper">
+                                <div class="progress-label">JavaScript level: <br></div>
+                                <div class="progress" role="progressbar" aria-label="SQL Progress" aria-valuenow="30"
+                                    aria-valuemin="0" aria-valuemax="100">
+                                    <div class="progress-bar" style="width: 30%"></div>
+                                </div>
+                            </div>
+                            <div class="progress-wrapper">
+                                <div class="progress-label">Ruby level: <br></div>
+                                <div class="progress" role="progressbar" aria-label="SQL Progress" aria-valuenow="20"
+                                    aria-valuemin="0" aria-valuemax="100">
+                                    <div class="progress-bar" style="width: 20%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="support">
+        <div class="col-md-5 col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <div class="mb-2">
+                    </div>
+                    <h5 class="card-title">Support</h5>
+                    <div class="row">
+                        <div class="col">
+                            <h6 class="card-subtitle mb-2 text-body-secondary">Technical support</h6>
+                            <p>
+                                bytelearning@uwe.ac.uk<br>+44 7415103842
+                            </p>
+                        </div>
+                        <div class="col">
+                            <h6 class="card-subtitle mb-2 text-body-secondary">Academic support</h6>
+                            <p>
+                                For help with modules/lessons, contact the lecturer in the first instance.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+    <section class="options">
+        <div class="col-md-5 col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <div class="mb-2">
+                    </div>
+                    <h5 class="card-title">Options</h5>
+                    <h6 class="card-subtitle mb-2 text-body-secondary"><i class="bi bi-bell"></i> Push Notification</h6>
+                    <h6 class="card-subtitle mb-2 text-body-secondary"><i class="bi bi-lightbulb-off"></i> Page Appearance</h6>
+                    <h6 class="card-subtitle mb-2 text-body-secondary"><i class="bi bi-chat-dots"></i> Change Language</h6>
+                    <h6 class="card-subtitle mb-2 text-body-secondary"><i class="bi bi-calendar-plus"></i> Link Calendar</h6>
+
+                    <button type="button" class="btn btn-secondary mt-2 float-end" data-bs-toggle="offcanvas"
+                        data-bs-target="#options-info-offcanvas">
+                        <i class="bi bi-box-arrow-up-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="achievements">
+        <div class="col-md-5 col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Achievements</h5>
+                    <div class="d-flex justify-content-start align-items-center achievement">
+                        <div style="display: flex; flex-direction: column; align-items: center;">
+                            <i class="bi bi-award" style="font-size: 36px; margin-bottom: 5px;"></i>
+                            <p style="font-size: 14px;">Placeholder text 1</p>
+                        </div>
+                        <div style="display: flex; flex-direction: column; align-items: center; margin-left: 10px;">
+                            <i class="bi bi-award" style="font-size: 36px; margin-bottom: 5px;"></i>
+                            <p style="font-size: 14px;">Placeholder text 2</p>
+                        </div>
+                        <div style="display: flex; flex-direction: column; align-items: center; margin-left: 10px;">
+                            <i class="bi bi-award" style="font-size: 36px; margin-bottom: 5px;"></i>
+                            <p style="font-size: 14px;">Placeholder text 3</p>
+                        </div>
+                        <div style="display: flex; flex-direction: column; align-items: center; margin-left: 10px;">
+                            <i class="bi bi-award" style="font-size: 36px; margin-bottom: 5px;"></i>
+                            <p style="font-size: 14px;">Placeholder text 4</p>
+                        </div>
+                    </div>
+                    <!-- Add more achievement divs as needed -->
+                    <button type="button" class="btn btn-secondary mt-2 float-end" data-bs-toggle="offcanvas"
+                        data-bs-target="#achievements-offcanvas">
+                        <i class="bi bi-box-arrow-up-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    
+</div>
+{% endblock %}

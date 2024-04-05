@@ -13,7 +13,7 @@ def format_objectives(objectivesData):
     return str(output)
 
 
-def query(user_message, objectivesData):
+def query(user_message, objectivesData, userCode):
     try:
         # Load your API key from config.py file
         client = OpenAI(api_key=config.OPENAI_KEY)
@@ -23,14 +23,14 @@ def query(user_message, objectivesData):
         messages=[
             {
                 "role": "system",
-                "content": "Your job is to provide feedback, improvements and help with students who are learning to code. You will be provided with information about what the students are currently working on."
+                "content": "Your job is to provide feedback, improvements and help with students who are learning to code. You will be provided with information about what the students are currently working on, as well as their objectives. Remember, you should guide them, but not solve the objectives for them."
             },
             {
-                "role": "context",
-                "content": "Here is the lesson the students are following: "
+                "role": "system",
+                "content": "Here is the code the student is currently editing: " + userCode
             },
             {
-                "role": "context",
+                "role": "system",
                 "content": "Here is the objectives they have been asked to fulfil: " + format_objectives(objectivesData)
             },
             {

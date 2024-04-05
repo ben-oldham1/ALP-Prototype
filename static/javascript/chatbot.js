@@ -3,11 +3,17 @@ const sendMessage = async () => {
     const chatArea = document.getElementById('chat-area');
     const message = document.getElementById('user-message').value;
 
+    var codeContents = editor.getValue();
+
     function outputMsg(chatArea, user, message) {
+        // Showdown js for markdown to HTML conversion
+        var converter = new showdown.Converter();
+        var htmlMessage = converter.makeHtml(message);
+
         const messageElement = document.createElement('div');
         messageElement.className = "row mb-2";
         messageElement.innerHTML = `<div class="col-12"><strong>${user}</strong></div>
-                                    <div class="col-12">${message}</div>`;
+                                    <div class="col-12">${htmlMessage}</div>`;
         chatArea.appendChild(messageElement);
     }
 
@@ -33,7 +39,10 @@ const sendMessage = async () => {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ message: message })
+        body: JSON.stringify({ 
+            message: message,
+            codeContents: codeContents
+        })
     });
 
     const data = await response.json();

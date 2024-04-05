@@ -45,7 +45,11 @@ def account():
 def lessonView():
     objectivesData = load_objectives()
 
-    return render_template('pages/lessonView.html', objectivesData=objectivesData);
+    # Get example code
+    with open('static/data/lessonCode.txt', 'r') as f:
+        lessonCode = f.read()
+
+    return render_template('pages/lessonView.html', objectivesData=objectivesData, lessonCode=str(lessonCode));
 
 # API route to provide AI chatbot functionality
 @app.route('/chatbot', methods=['POST'])

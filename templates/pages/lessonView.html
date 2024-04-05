@@ -100,12 +100,12 @@ View lesson
                     <h1 class="h3 sticky-top">Objectives</h1>
 
                     {% for objective in objectivesData %}
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="{{objective['id']}}">
-                            <label class="form-check-label" for="{{objective['id']}}">
-                                {{objective['content']}}
-                            </label>
-                        </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="{{objective['id']}}">
+                        <label class="form-check-label" for="{{objective['id']}}">
+                            {{objective['content']}}
+                        </label>
+                    </div>
                     {% endfor %}
 
                 </div>
@@ -123,59 +123,40 @@ View lesson
                     <ul class="nav nav-underline px-2 gap-3" id="js-tabs-1" role="tablist">
                         <li class="nav-item" role="presentation">
                             <button class="nav-link active" id="home-tab" data-bs-toggle="tab"
-                            data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane"
-                            aria-selected="true">
-                            <i class="bi bi-file-earmark"></i> Main.py
+                                data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane"
+                                aria-selected="true">
+                                <i class="bi bi-file-earmark"></i> Main.py
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="account-tab" data-bs-toggle="tab"
+                                data-bs-target="#account-tab-pane" type="button" role="tab"
+                                aria-controls="account-tab-pane" aria-selected="false">
+                                <i class="bi bi-file-earmark"></i> Config.py
+                            </button>
+                        </li>
+                    </ul>
+
+                    <div class="d-flex gap-2">
+                        <button type="button" onclick="runCode()" class="btn btn-primary">
+                            <i class="bi bi-play-fill"></i> Run
                         </button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="account-tab" data-bs-toggle="tab"
-                        data-bs-target="#account-tab-pane" type="button" role="tab" aria-controls="account-tab-pane"
-                        aria-selected="false">
-                        <i class="bi bi-file-earmark"></i> Config.py
-                    </button>
-                </li>
-            </ul>
 
-            <div class="d-flex gap-2">
-                <button type="button" onclick="runCode()" class="btn btn-primary">
-                    <i class="bi bi-play-fill"></i> Run
-                </button>
+                        <button type="button" class="btn btn-secondary" data-bs-toggle="offcanvas"
+                            data-bs-target="#ai-offcanvas">
+                            <i class="bi bi-stars"></i> Ask AI
+                        </button>
+                    </div>
+                </div>
+            </div>
 
-                <button type="button" class="btn btn-secondary" data-bs-toggle="offcanvas" data-bs-target="#ai-offcanvas">
-                    <i class="bi bi-stars"></i> Ask AI
-                </button>
-            </div>
-        </div>
-            </div>
-                
             <div class="row mt-1">
                 <div class="tab-content p-0" id="js-tabs-content-1">
                     <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab"
                         tabindex="0">
 
                         <div id="editor-container">
-                            <div id="editor">
-# Step 1: Greet the user.
-print("Welcome to the 100th Birthday Calculator!")
-
-# Step 2: Ask for the user's name.
-name = input("What is your name? ")
-
-# Step 3: Ask for the user's age.
-age = input("How old are you? ")
-
-# Step 4: Convert the age from a string to an integer.
-age = int(age)
-
-# Step 5: Calculate the year in which the user will turn 100.
-current_year = 2023 # You can update this year to the current year.
-years_until_100 = 100 - age
-year_turn_100 = current_year + years_until_100
-
-# Step 6: Display the result to the user.
-print(f"Hello, {name}! You will turn 100 years old in the year {year_turn_100}.")
-                            </div>
+                            <div id="editor">{{ lessonCode }}</div>
                         </div>
 
                     </div>
@@ -203,8 +184,7 @@ print(f"Hello, {name}! You will turn 100 years old in the year {year_turn_100}."
                 </div>
             </div>
 
-            <div class="row bg-very-dark"
-                style="background: var(--bs-body-bg);">
+            <div class="row bg-very-dark" style="background: var(--bs-body-bg);">
                 <div class="py-2">
 
                     <div id="terminal" class="terminal">

@@ -50,12 +50,19 @@ def lessonView():
 # API route to provide AI chatbot functionality
 @app.route('/chatbot', methods=['POST'])
 def chatbot():
-    # Get contextual data
-    user_message = request.json['message']
+    # Get user message
+    userMessage = request.json['message']
+    userCode = request.json['codeContents']
+
+    # Get objectives for the current lesson
     objectivesData = load_objectives()
 
+    # Get the tutorial content for current lesson
+    with open('templates/tutorials/pythonLessonOne.html', 'r') as f:
+        tutorialContent = f.read()
+
     # Send contextual data to the chatbot and get the response
-    chatbot_response = chatbot_api.query(user_message, objectivesData)
+    chatbot_response = chatbot_api.query(userMessage, objectivesData, userCode)
 
     return jsonify({'response': chatbot_response})
 
